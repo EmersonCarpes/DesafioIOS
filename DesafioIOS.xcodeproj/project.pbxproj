@@ -18,6 +18,8 @@
 		4E183E9429211C48004A155E /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E183E9329211C48004A155E /* ApplicationCoordinator.swift */; };
 		4E183E9629211C71004A155E /* MoviesListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E183E9529211C71004A155E /* MoviesListCoordinator.swift */; };
 		4E183E9929211CC3004A155E /* MoviesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E183E9829211CC3004A155E /* MoviesListViewController.swift */; };
+		4EC7A48A29215B16006ED8CA /* APIServices in Frameworks */ = {isa = PBXBuildFile; productRef = 4EC7A48929215B16006ED8CA /* APIServices */; };
+		4EC7A48C29215B30006ED8CA /* MoviesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC7A48B29215B30006ED8CA /* MoviesListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,7 @@
 		4E183E9329211C48004A155E /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
 		4E183E9529211C71004A155E /* MoviesListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListCoordinator.swift; sourceTree = "<group>"; };
 		4E183E9829211CC3004A155E /* MoviesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListViewController.swift; sourceTree = "<group>"; };
+		4EC7A48B29215B30006ED8CA /* MoviesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4EC7A48A29215B16006ED8CA /* APIServices in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,6 +91,7 @@
 				4E022FC329210B2300DF3C3F /* DesafioIOSTests */,
 				4E022FCD29210B2300DF3C3F /* DesafioIOSUITests */,
 				4E022FAB29210B2300DF3C3F /* Products */,
+				4EC7A48829215B16006ED8CA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -153,8 +158,16 @@
 			isa = PBXGroup;
 			children = (
 				4E183E9829211CC3004A155E /* MoviesListViewController.swift */,
+				4EC7A48B29215B30006ED8CA /* MoviesListViewModel.swift */,
 			);
 			path = Scenes;
+			sourceTree = "<group>";
+		};
+		4EC7A48829215B16006ED8CA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -173,6 +186,9 @@
 			dependencies = (
 			);
 			name = DesafioIOS;
+			packageProductDependencies = (
+				4EC7A48929215B16006ED8CA /* APIServices */,
+			);
 			productName = DesafioIOS;
 			productReference = 4E022FAA29210B2300DF3C3F /* DesafioIOS.app */;
 			productType = "com.apple.product-type.application";
@@ -291,6 +307,7 @@
 				4E022FB029210B2300DF3C3F /* SceneDelegate.swift in Sources */,
 				4E183E9229211BFF004A155E /* Coordinator.swift in Sources */,
 				4E183E9629211C71004A155E /* MoviesListCoordinator.swift in Sources */,
+				4EC7A48C29215B30006ED8CA /* MoviesListViewModel.swift in Sources */,
 				4E183E9429211C48004A155E /* ApplicationCoordinator.swift in Sources */,
 				4E183E9929211CC3004A155E /* MoviesListViewController.swift in Sources */,
 			);
@@ -624,6 +641,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4EC7A48929215B16006ED8CA /* APIServices */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = APIServices;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4E022FA229210B2300DF3C3F /* Project object */;
 }
