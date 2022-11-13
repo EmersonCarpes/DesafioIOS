@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import APIServices
 
 final class MoviesListCoordinator: Coordinator {
     var navigationController: UINavigationController
@@ -15,9 +16,14 @@ final class MoviesListCoordinator: Coordinator {
     }
 
     func start() {
-        let viewController = MoviesListViewController()
-        viewController.coordinator = self
+        let viewController = MoviesListViewController(coordinator: self, viewModel: MoviesListViewModel())
         navigationController.pushViewController(viewController, animated: true)
     }
 
+    // MARK: Actions
+    
+    func didSelect(_ movie: Movie) {
+        let movieDetails = MovieDetailsCoordinator(with: navigationController)
+        movieDetails.start(movie: movie)
+    }
 }
