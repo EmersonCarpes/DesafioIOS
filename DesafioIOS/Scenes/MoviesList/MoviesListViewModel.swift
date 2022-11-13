@@ -8,12 +8,18 @@
 import APIServices
 
 final class MoviesListViewModel {
+    
+    var onUpdateUI: (() -> ())?
+    
+    var movies: [Movie] = []
+    
     func fetchComics() {
-        APIService.repository.movies.getComics { response in
+        APIService.repository.movies.getComics { [weak self] response in
             switch response {
             case .success(let value):
-                break
-            case .fail(let error):
+                self?.movies = value.data.results
+                self?.onUpdateUI?()
+            case .fail(_):
                 break
             }
         }

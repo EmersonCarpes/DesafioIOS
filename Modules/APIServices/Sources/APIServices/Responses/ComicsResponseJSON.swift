@@ -16,6 +16,13 @@ public struct ComicsResponseData: Decodable {
 public struct Movie: Decodable {
     public let title: String
     public let thumbnail: Thumbnail
+    public let issueNumber: Int
+    public let prices: [MoviePrice]
+}
+
+public struct MoviePrice: Decodable {
+    public let type: String
+    public let price: Double
 }
 
 public struct Thumbnail: Decodable {
