@@ -40,6 +40,7 @@ class MoviesListViewController: UIViewController {
         super.viewDidLoad()
         
         setupUI()
+        registerCells()
         bindViewModel()
     }
     
