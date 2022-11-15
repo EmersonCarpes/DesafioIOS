@@ -10,7 +10,8 @@ import Foundation
 struct URLRequestBuilder {
     var method: HTTPMethod
     var urlPath: String
-    var parameters: [String: Any]?
+    var defaultParameters: [String: Any]?
+    var customParameters: [String: Any]?
     
     mutating func urlRequest() throws -> URLRequest {
         
@@ -19,12 +20,20 @@ struct URLRequestBuilder {
         }
 
         var queryItems = [URLQueryItem]()
-        if let parameters = parameters {
+        if let parameters = defaultParameters {
             for (key, value) in parameters {
                 
                 queryItems.append(URLQueryItem(name: key, value: "\(value)"))
             }
         }
+        
+        if let parameters = customParameters {
+            for (key, value) in parameters {
+                
+                queryItems.append(URLQueryItem(name: key, value: "\(value)"))
+            }
+        }
+        
         url.append(queryItems: queryItems)
         
         let urlRequest = URLRequest(url: url)

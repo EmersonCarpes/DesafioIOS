@@ -60,7 +60,7 @@ class MoviesListViewController: UIViewController {
             }
         }
 
-        viewModel.fetchComics()
+        viewModel.fetchComics(offset: viewModel.offset)
     }
     
     private func registerCells() {
@@ -87,5 +87,12 @@ extension MoviesListViewController: UICollectionViewDataSource {
 extension MoviesListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         coordinator?.didSelect(viewModel.movies[indexPath.row])
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
+        if viewModel.shouldGetNextPage(row: indexPath.row) {
+            viewModel.fetchComics(offset: viewModel.offset)
+        }
     }
 }

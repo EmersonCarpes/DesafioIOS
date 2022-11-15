@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import APIServices
 import Kingfisher
 
 final class MovieCollectionViewCell: UICollectionViewCell {
@@ -28,7 +27,7 @@ final class MovieCollectionViewCell: UICollectionViewCell {
         setupUI()
         
         nameLabel.text = movie.title
-        imageView.kf.setImage(with: URL(string: "\(movie.thumbnail.path).\(movie.thumbnail.format)"))
+        imageView.kf.setImage(with: URL(string: movie.thumbnailURL))
     }
     
     private func setupUI() {

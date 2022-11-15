@@ -93,14 +93,14 @@ class MovieDetailsViewController: UIViewController {
     }
     
     private func setupData() {
-        imageView.kf.setImage(with: URL(string: "\(viewModel.movie.thumbnail.path).\(viewModel.movie.thumbnail.format)"))
+        imageView.kf.setImage(with: URL(string: viewModel.movie.thumbnailURL))
         nameLabel.text = viewModel.movie.title
         stackView.addArrangedSubview(nameLabel)
         
-        issueLabel.text = "# \(viewModel.movie.issueNumber)"
+        issueLabel.text = viewModel.movie.issueNumber
         stackView.addArrangedSubview(issueLabel)
         
-        priceLabel.text = "R$ \(viewModel.movie.prices.first?.price ?? 0.0)"
+        priceLabel.text = viewModel.movie.price
         stackView.addArrangedSubview(priceLabel)
     }
 }
