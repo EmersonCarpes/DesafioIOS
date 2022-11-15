@@ -1,13 +1,13 @@
 //
-//  MoviesListViewController.swift
+//  SearchViewController.swift
 //  DesafioIOS
 //
-//  Created by Emerson Carpes on 13/11/22.
+//  Created by Emerson Carpes on 15/11/22.
 //
 
 import UIKit
 
-class MoviesListViewController: UIViewController {
+class SearchViewController: UIViewController {
     
     lazy private var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -21,11 +21,11 @@ class MoviesListViewController: UIViewController {
         
         return collectionView
     }()
+
+    private var coordinator: SearchCoordinator?
+    private var viewModel: SearchViewModel
     
-    weak private var coordinator: MoviesListCoordinator?
-    private var viewModel: MoviesListViewModel
-    
-    init(coordinator: MoviesListCoordinator?, viewModel: MoviesListViewModel) {
+    init(coordinator: SearchCoordinator?, viewModel: SearchViewModel) {
         self.coordinator = coordinator
         self.viewModel = viewModel
 
@@ -42,21 +42,8 @@ class MoviesListViewController: UIViewController {
         setupUI()
         registerCells()
         bindViewModel()
-        
-        title = "Comics Movies"
-        navigationItem.searchController = createSearchController()
-        navigationItem.hidesSearchBarWhenScrolling = false
     }
-    
-    private func createSearchController() -> UISearchController {
-        let searchResultsController = coordinator?.searchViewController()
-        let searchController = UISearchController(searchResultsController: searchResultsController)
-        searchController.searchBar.placeholder = "Filter by Title"
-        searchController.obscuresBackgroundDuringPresentation = true
-        searchController.searchResultsUpdater = searchResultsController
-        return searchController
-    }
-    
+
     private func setupUI() {
         view.addSubview(collectionView)
         
@@ -72,8 +59,6 @@ class MoviesListViewController: UIViewController {
                 self?.collectionView.reloadData()
             }
         }
-
-        viewModel.fetchComics(offset: viewModel.offset)
     }
     
     private func registerCells() {
@@ -81,7 +66,7 @@ class MoviesListViewController: UIViewController {
     }
 }
 
-extension MoviesListViewController: UICollectionViewDataSource {
+extension SearchViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         viewModel.movies.count
     }
@@ -90,14 +75,14 @@ extension MoviesListViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: MovieCollectionViewCell.self), for: indexPath) as? MovieCollectionViewCell else {
             return UICollectionViewCell()
         }
-        
+
         cell.config(movie: viewModel.movies[indexPath.row])
-        
+
         return cell
     }
 }
 
-extension MoviesListViewController: UICollectionViewDelegate {
+extension SearchViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         coordinator?.didSelect(viewModel.movies[indexPath.row])
     }
@@ -105,7 +90,23 @@ extension MoviesListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         
         if viewModel.shouldGetNextPage(row: indexPath.row) {
-            viewModel.fetchComics(offset: viewModel.offset)
+            viewModel.fetchComics(offset: viewModel.offset, filterBy: viewModel.filterBy)
         }
     }
 }
+
+extension SearchViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        viewModel.movies.removeAll()
+        
+        guard let text = searchController.searchBar.text, !text.isEmpty else {
+            viewModel.filterBy = ""
+            collectionView.reloadData()
+            return
+        }
+
+        viewModel.filterBy = text
+        viewModel.fetchComics(offset: 0, filterBy: text)
+    }
+}
+
