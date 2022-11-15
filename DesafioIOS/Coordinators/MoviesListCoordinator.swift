@@ -18,6 +18,11 @@ final class MoviesListCoordinator: Coordinator {
         let viewController = MoviesListViewController(coordinator: self, viewModel: MoviesListViewModel())
         navigationController.pushViewController(viewController, animated: true)
     }
+    
+    func searchViewController() -> SearchViewController {
+        let searchCoordinator = SearchCoordinator(with: navigationController)
+        return SearchViewController(coordinator: searchCoordinator, viewModel: SearchViewModel())
+    }
 
     // MARK: Actions
     

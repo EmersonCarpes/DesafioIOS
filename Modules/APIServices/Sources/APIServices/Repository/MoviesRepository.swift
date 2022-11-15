@@ -8,14 +8,16 @@
 import Foundation
 
 public protocol MoviesRepository {
-    func getComics(offset: Int, _ completion: @escaping (DataResponse<ComicsResponseJSON>) -> Void)
+    func getComics(offset: Int, filterFor: String?, _ completion: @escaping (DataResponse<ComicsResponseJSON>) -> Void)
 }
 
 // MARK: - Implementation
 
 final class MoviesRepositoryImpl: MoviesRepository {
-    func getComics(offset: Int, _ completion: @escaping (DataResponse<ComicsResponseJSON>) -> Void) {
-        let endpoint = GetComicsEndpoint(method: .get, path: "public/comics", parameters: ["offset": offset])
+    func getComics(offset: Int, filterFor: String? = nil, _ completion: @escaping (DataResponse<ComicsResponseJSON>) -> Void) {
+        
+        let queryItems = GetComicsEndpoint.QueryItems(offset: offset, titleStartsWith: filterFor)
+        let endpoint = GetComicsEndpoint(parameters: queryItems.asUnsafeDictionary())
         
         MobileV1Service.shared.request(endpoint: endpoint) { response in
             switch response {
