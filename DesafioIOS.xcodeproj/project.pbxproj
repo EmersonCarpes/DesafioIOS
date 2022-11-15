@@ -18,6 +18,8 @@
 		4E183E9429211C48004A155E /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E183E9329211C48004A155E /* ApplicationCoordinator.swift */; };
 		4E183E9629211C71004A155E /* MoviesListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E183E9529211C71004A155E /* MoviesListCoordinator.swift */; };
 		4E183E9929211CC3004A155E /* MoviesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E183E9829211CC3004A155E /* MoviesListViewController.swift */; };
+		4E54345329230561008A2D3E /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E54345229230561008A2D3E /* Movie.swift */; };
+		4E54345529230D98008A2D3E /* DoubleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E54345429230D98008A2D3E /* DoubleExtensions.swift */; };
 		4EC7A48A29215B16006ED8CA /* APIServices in Frameworks */ = {isa = PBXBuildFile; productRef = 4EC7A48929215B16006ED8CA /* APIServices */; };
 		4EC7A48C29215B30006ED8CA /* MoviesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC7A48B29215B30006ED8CA /* MoviesListViewModel.swift */; };
 		4EC7A48F29216AAD006ED8CA /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC7A48E29216AAD006ED8CA /* MovieCollectionViewCell.swift */; };
@@ -61,6 +63,8 @@
 		4E183E9329211C48004A155E /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
 		4E183E9529211C71004A155E /* MoviesListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListCoordinator.swift; sourceTree = "<group>"; };
 		4E183E9829211CC3004A155E /* MoviesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListViewController.swift; sourceTree = "<group>"; };
+		4E54345229230561008A2D3E /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		4E54345429230D98008A2D3E /* DoubleExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtensions.swift; sourceTree = "<group>"; };
 		4EC7A48B29215B30006ED8CA /* MoviesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListViewModel.swift; sourceTree = "<group>"; };
 		4EC7A48E29216AAD006ED8CA /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
 		4EC7A49129216C20006ED8CA /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
@@ -196,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				4EC7A49129216C20006ED8CA /* ViewExtensions.swift */,
+				4E54345429230D98008A2D3E /* DoubleExtensions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -215,6 +220,7 @@
 			children = (
 				4EC7A49B29217086006ED8CA /* MovieDetailsViewController.swift */,
 				4EC7A49D292179EE006ED8CA /* MovieDetailsViewModel.swift */,
+				4E54345229230561008A2D3E /* Movie.swift */,
 			);
 			path = MovieDetails;
 			sourceTree = "<group>";
@@ -360,10 +366,12 @@
 				4E022FAE29210B2300DF3C3F /* AppDelegate.swift in Sources */,
 				4E022FB029210B2300DF3C3F /* SceneDelegate.swift in Sources */,
 				4E183E9229211BFF004A155E /* Coordinator.swift in Sources */,
+				4E54345529230D98008A2D3E /* DoubleExtensions.swift in Sources */,
 				4E183E9629211C71004A155E /* MoviesListCoordinator.swift in Sources */,
 				4EC7A49C29217086006ED8CA /* MovieDetailsViewController.swift in Sources */,
 				4EC7A49229216C20006ED8CA /* ViewExtensions.swift in Sources */,
 				4EC7A48C29215B30006ED8CA /* MoviesListViewModel.swift in Sources */,
+				4E54345329230561008A2D3E /* Movie.swift in Sources */,
 				4EC7A49E292179EE006ED8CA /* MovieDetailsViewModel.swift in Sources */,
 				4E183E9429211C48004A155E /* ApplicationCoordinator.swift in Sources */,
 				4E183E9929211CC3004A155E /* MoviesListViewController.swift in Sources */,

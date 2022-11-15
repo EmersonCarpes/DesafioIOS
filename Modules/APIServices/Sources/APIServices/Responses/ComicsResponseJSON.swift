@@ -5,27 +5,28 @@
 //  Created by Emerson Carpes on 13/11/22.
 //
 
-public struct ComicsResponse: Decodable {
-    public let data: ComicsResponseData
+public struct ComicsResponseJSON: Decodable {
+    public let data: ComicsResponseDataJSON
 }
 
-public struct ComicsResponseData: Decodable {
-    public let results: [Movie]
+public struct ComicsResponseDataJSON: Decodable {
+    public let offset: Int
+    public let results: [MovieJSON]
 }
 
-public struct Movie: Decodable {
+public struct MovieJSON: Decodable {
     public let title: String
-    public let thumbnail: Thumbnail
+    public let thumbnail: ThumbnailJSON
     public let issueNumber: Int
-    public let prices: [MoviePrice]
+    public let prices: [MoviePriceJSON]
 }
 
-public struct MoviePrice: Decodable {
+public struct MoviePriceJSON: Decodable {
     public let type: String
     public let price: Double
 }
 
-public struct Thumbnail: Decodable {
+public struct ThumbnailJSON: Decodable {
     public let path: String
     public let format: String
     

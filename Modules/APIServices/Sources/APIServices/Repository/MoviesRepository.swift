@@ -8,20 +8,20 @@
 import Foundation
 
 public protocol MoviesRepository {
-    func getComics(_ completion: @escaping (DataResponse<ComicsResponse>) -> Void)
+    func getComics(offset: Int, _ completion: @escaping (DataResponse<ComicsResponseJSON>) -> Void)
 }
 
 // MARK: - Implementation
 
 final class MoviesRepositoryImpl: MoviesRepository {
-    func getComics(_ completion: @escaping (DataResponse<ComicsResponse>) -> Void) {
-        let endpoint = GetComicsEndpoint(method: .get, path: "public/comics")
+    func getComics(offset: Int, _ completion: @escaping (DataResponse<ComicsResponseJSON>) -> Void) {
+        let endpoint = GetComicsEndpoint(method: .get, path: "public/comics", parameters: ["offset": offset])
         
         MobileV1Service.shared.request(endpoint: endpoint) { response in
             switch response {
             case .success(let data):
                 do {
-                    let decodedData = try JSONDecoder().decode(ComicsResponse.self, from: data.value)
+                    let decodedData = try JSONDecoder().decode(ComicsResponseJSON.self, from: data.value)
                     completion(.success(decodedData))
                 } catch let error {
                     completion(.fail(error))

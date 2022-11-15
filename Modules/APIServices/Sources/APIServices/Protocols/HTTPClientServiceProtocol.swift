@@ -7,20 +7,21 @@
 
 import Foundation
 
-protocol HTTPClientService {
+protocol HTTPClientServiceProtocol {
     var rootURLPath: String { get }
-    var parameters: [String: String] { get set }
+    var parameters: [String: Any] { get }
 
     func request(endpoint: HTTPClientEndpoint, completion: @escaping (HTTPClientResponse) -> Void)
 }
 
-extension HTTPClientService {
+extension HTTPClientServiceProtocol {
     
     func request(endpoint: HTTPClientEndpoint, completion: @escaping (HTTPClientResponse) -> Void) {
-
+        
         var builder = URLRequestBuilder(method: endpoint.method,
                                         urlPath: self.rootURLPath + endpoint.path,
-                                        parameters: self.parameters)
+                                        defaultParameters: self.parameters,
+                                        customParameters: endpoint.parameters)
 
         let urlRequest = try! builder.urlRequest()
         
@@ -37,6 +38,13 @@ extension HTTPClientService {
         }
         task.resume()
     }
+}
+
+class HTTPClientService: HTTPClientServiceProtocol {
+    
+    var rootURLPath: String { return "" }
+    
+    var parameters: [String : Any] { return [:] }
 }
 
 

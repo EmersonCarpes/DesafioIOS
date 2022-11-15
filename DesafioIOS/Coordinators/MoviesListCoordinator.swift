@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import APIServices
 
 final class MoviesListCoordinator: Coordinator {
     var navigationController: UINavigationController
