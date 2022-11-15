@@ -16,10 +16,10 @@ Desafio iOS
 
 - [x] Listagem de filmes
 - [x] Detalhe do filme
+- [x] Paginação da listagem de filmes
 - [ ] Testes
 - [ ] Pipeline
 - [ ] Filtro de ano para a listagem
-- [ ] Paginação da listagem de filmes
 - [ ] Filtro por titulo
 
 ## Bibliotecas externas
