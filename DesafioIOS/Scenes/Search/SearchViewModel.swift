@@ -1,22 +1,24 @@
 //
-//  MoviesListViewModel.swift
+//  SearchViewModel.swift
 //  DesafioIOS
 //
-//  Created by Emerson Carpes on 13/11/22.
+//  Created by Emerson Carpes on 15/11/22.
 //
 
 import APIServices
 
-final class MoviesListViewModel {
+final class SearchViewModel {
     
     private var pagination = false
     
     var onUpdateUI: (() -> ())?
+    
+    var filterBy = ""
     var movies: [Movie] = []
     var offset = 0
-    
-    func fetchComics(offset: Int) {
-        APIService.repository.movies.getComics(offset: offset, filterFor: nil) { [weak self] response in
+
+    func fetchComics(offset: Int, filterBy: String) {
+        APIService.repository.movies.getComics(offset: offset, filterFor: filterBy) { [weak self] response in
             guard let self = self else { return }
             switch response {
             case .success(let value):
@@ -25,6 +27,7 @@ final class MoviesListViewModel {
                 self.offset = value.data.offset + 48
                 self.pagination = true
                 self.onUpdateUI?()
+                break
             case .fail(_):
                 break
             }

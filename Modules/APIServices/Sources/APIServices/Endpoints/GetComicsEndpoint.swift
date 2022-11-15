@@ -8,13 +8,12 @@
 import Foundation
 
 struct GetComicsEndpoint: HTTPClientEndpoint {
-    var method: HTTPMethod
-    var path: String
+    var method: HTTPMethod = .get
+    var path: String = "public/comics"
     var parameters: [String : Any]?
     
-    // MARK: Response
-    
-    struct Response: Decodable {
-        let data: ComicsResponseData
+    struct QueryItems: HTTPClientParameter {
+        let offset: Int
+        let titleStartsWith: String?
     }
 }
