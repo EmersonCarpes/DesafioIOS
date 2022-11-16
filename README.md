@@ -18,7 +18,9 @@ Desafio iOS
 - [x] Detalhe do filme
 - [x] Paginação da listagem de filmes
 - [x] Filtro por titulo
-- [ ] Testes
+- [x] UI Testes
+- [ ] Unit Testes
+- [ ] Snapshot Testes
 - [ ] Pipeline
 - [ ] Filtro de ano para a listagem
 
