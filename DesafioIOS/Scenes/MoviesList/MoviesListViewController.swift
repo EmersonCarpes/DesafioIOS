@@ -16,6 +16,7 @@ class MoviesListViewController: UIViewController {
         layout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.accessibilityIdentifier = "moviesCollection"
         collectionView.dataSource = self
         collectionView.delegate = self
         

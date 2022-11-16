@@ -26,6 +26,7 @@ class MovieDetailsViewController: UIViewController {
         let label = UILabel()
         label.numberOfLines = 0
         label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        label.accessibilityIdentifier = "nameLabel"
         return label
     }()
     
