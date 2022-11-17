@@ -6,7 +6,7 @@ Desafio iOS
 - Arquitetura `MVVM-C`
 - Gerenciador de dependências `Swift Package Manager`
 - Interface desenvolvida em `view code`
-- Modularização feita utilizando SPM separando em um package logal as requests de API
+- Modularização feita utilizando SPM separando em um package local as requests de API
 
 ## Screenshots
 
